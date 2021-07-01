@@ -22,14 +22,14 @@ class _WeatherState extends State<Weather> {
   var weather;
   Future getWeather(String city) async {
     var url = Uri.parse(
-        "http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=fbf7553156396c9b52e636776044024b");
+        "http://api.openweathermap.org/data/2.5/weather?q=${city}&units=U.S.&appid=fbf7553156396c9b52e636776044024b");
     http.Response response = await http.get(url);
     var results = json.decode(response.body);
     setState(() {
-      temperatureVal = results['main']['temp'];
+      temperatureVal = ((results['main']['temp']) - 273.0).toStringAsFixed(2);
       weather = results['weather'][0]['main'];
       humidity = results['main']['humidity'];
-      windspeed = results['wind']['speed'];
+      windspeed = (results['wind']['speed'] * 3.6).toStringAsFixed(2);
     });
   }
 
@@ -115,7 +115,7 @@ class _WeatherState extends State<Weather> {
                         style: TextStyle(
                             fontSize: 18.0, fontWeight: FontWeight.bold),
                       ),
-                      trailing: Text("$humidity")),
+                      trailing: Text("$humidity %")),
                   SizedBox(
                     height: 16.0,
                   ),
@@ -126,7 +126,7 @@ class _WeatherState extends State<Weather> {
                         style: TextStyle(
                             fontSize: 18.0, fontWeight: FontWeight.bold),
                       ),
-                      trailing: Text("$windspeed"))
+                      trailing: Text("$windspeed kmph"))
                 ]),
               ),
             ),
