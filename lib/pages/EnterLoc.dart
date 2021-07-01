@@ -56,7 +56,9 @@ class _EnterLocState extends State<EnterLoc> {
                       ),*/
                       ElevatedButton(
                         onPressed: () {
-                          print("hi");
+                          String cityName = myController.text;
+                          Navigator.pushNamed(context, '/location',
+                              arguments: {'City': cityName});
                         },
                         child: Text("Check Weather"),
                         style: ElevatedButton.styleFrom(
