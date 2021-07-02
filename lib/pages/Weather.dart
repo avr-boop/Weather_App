@@ -87,46 +87,57 @@ class _WeatherState extends State<Weather> {
                 color: Colors.white,
                 child: ListView(children: [
                   ListTile(
-                      leading: FaIcon(FontAwesomeIcons.temperatureHigh),
-                      title: Text(
-                        "   Temperature",
-                        style: TextStyle(
-                            fontSize: 18.0, fontWeight: FontWeight.bold),
-                      ),
-                      trailing: Text("$temperatureVal\u00b0")),
+                    leading: FaIcon(FontAwesomeIcons.temperatureHigh),
+                    title: Text(
+                      "   Temperature",
+                      style: TextStyle(
+                          fontSize: 18.0, fontWeight: FontWeight.bold),
+                    ),
+                    trailing: Text(temperatureVal != null
+                        ? temperatureVal.toString() + "\u00b0"
+                        : "Loading.."),
+                  ),
                   SizedBox(
                     height: 16.0,
                   ),
                   ListTile(
-                      leading: FaIcon(FontAwesomeIcons.cloudRain),
-                      title: Text(
-                        "   Weather",
-                        style: TextStyle(
-                            fontSize: 18.0, fontWeight: FontWeight.bold),
-                      ),
-                      trailing: Text("$weather")),
+                    leading: FaIcon(FontAwesomeIcons.cloudRain),
+                    title: Text(
+                      "   Weather",
+                      style: TextStyle(
+                          fontSize: 18.0, fontWeight: FontWeight.bold),
+                    ),
+                    trailing: Text(
+                        weather != null ? weather.toString() : "Loading.."),
+                  ),
                   SizedBox(
                     height: 16.0,
                   ),
                   ListTile(
-                      leading: FaIcon(FontAwesomeIcons.water),
-                      title: Text(
-                        "   Humidity",
-                        style: TextStyle(
-                            fontSize: 18.0, fontWeight: FontWeight.bold),
-                      ),
-                      trailing: Text("$humidity %")),
+                    leading: FaIcon(FontAwesomeIcons.water),
+                    title: Text(
+                      "   Humidity",
+                      style: TextStyle(
+                          fontSize: 18.0, fontWeight: FontWeight.bold),
+                    ),
+                    trailing: Text(humidity != null
+                        ? humidity.toString() + " %"
+                        : "Loading.."),
+                  ),
                   SizedBox(
                     height: 16.0,
                   ),
                   ListTile(
-                      leading: FaIcon(FontAwesomeIcons.wind),
-                      title: Text(
-                        "     Windspeed",
-                        style: TextStyle(
-                            fontSize: 18.0, fontWeight: FontWeight.bold),
-                      ),
-                      trailing: Text("$windspeed kmph"))
+                    leading: FaIcon(FontAwesomeIcons.wind),
+                    title: Text(
+                      "   Windspeed",
+                      style: TextStyle(
+                          fontSize: 18.0, fontWeight: FontWeight.bold),
+                    ),
+                    trailing: Text(windspeed != null
+                        ? windspeed.toString() + " kmph"
+                        : "Loading.."),
+                  )
                 ]),
               ),
             ),
